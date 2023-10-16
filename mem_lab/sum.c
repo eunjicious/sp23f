@@ -16,31 +16,32 @@ int sum_array_cols(int** a)
 
 int main()
 {
-	int** a;
-	int i, j, sum = 0;
+    int** a;
+    int i, j;
 
-	a = (int**)malloc(sizeof(int*) * COLS);
+    a = (int**)malloc(sizeof(int*) * ROWS);
 
-	for(i = 0; i < COLS; i++)
-		a[i] = (int*)malloc(sizeof(int)*ROWS);
-		
-	
-	for(i = 0; i < COLS; i++)
-		for(j = 0; j < ROWS; j++)
-			a[i][j] = i;	
+    for(i = 0; i < ROWS; i++)
+        a[i] = (int*)malloc(sizeof(int)*COLS);
 
-#ifdef SUM_COLS		
-	sum = sum_array_cols(a);
-	printf("sum_cols ... \n");
+
+    for(i = 0; i < ROWS; i++)
+        for(j = 0; j < COLS; j++)
+            a[i][j] = i;
+
+#ifdef SUM_COLS     
+    int sum = sum_array_cols(a);
+    printf("sum_cols ... \n");
 #endif
 
 #ifdef SUM_ROWS
-	printf("sum_rows ... \n");
-	sum = sum_array_rows(a);
+    printf("sum_rows ... \n");
+    int sum = sum_array_rows(a);
 #endif
 
-	printf("sum = %d\n", sum);
+    printf("sum = %d\n", sum);
 
-	return 0;
+    return 0;
 }
+
 
